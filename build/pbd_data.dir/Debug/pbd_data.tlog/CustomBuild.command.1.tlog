@@ -1,0 +1,10 @@
+^D:\WORKSPACE\YJS_PROJECT\PBD_DATA\CMAKELISTS.TXT
+setlocal
+D:\software\cmake-3.21.3\bin\cmake.exe -SD:/workspace/yjs_project/pbd_data -BD:/workspace/yjs_project/pbd_data/build --check-stamp-file D:/workspace/yjs_project/pbd_data/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

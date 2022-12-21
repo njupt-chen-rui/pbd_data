@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\workspace\yjs_project\pbd_data\build\CMakeFiles\7a53a3febfac3287906b5a07f14c7855\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{754E459B-9983-3EB6-B495-751B07082DFB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

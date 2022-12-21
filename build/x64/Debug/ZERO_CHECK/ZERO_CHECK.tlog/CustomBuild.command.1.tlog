@@ -1,0 +1,10 @@
+^D:\WORKSPACE\YJS_PROJECT\PBD_DATA\BUILD\CMAKEFILES\7A53A3FEBFAC3287906B5A07F14C7855\GENERATE.STAMP.RULE
+setlocal
+D:\software\cmake-3.21.3\bin\cmake.exe -SD:/workspace/yjs_project/pbd_data -BD:/workspace/yjs_project/pbd_data/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/workspace/yjs_project/pbd_data/build/pbd_data.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
