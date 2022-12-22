@@ -5,7 +5,7 @@
 #include<memory.h>
 #include<math.h>
 #include<algorithm>
-#include<pbd_data\datastruct.h>
+#include<pbd_data/datastruct.h>
 
 using namespace std;
 
@@ -54,6 +54,9 @@ void readinp_tet(string Path, vector<vert> &nodes, vector<tet> &tets){
         fin>>tmp2.v[1]>>c;
         fin>>tmp2.v[2]>>c;
         fin>>tmp2.v[3];
+        for(int i=0;i<4;i++){
+            tmp2.v[i]--;
+        }
         tets.push_back(tmp2);
     }
     fin.close();

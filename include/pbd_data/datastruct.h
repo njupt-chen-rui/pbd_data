@@ -10,6 +10,11 @@ struct vert{
     double x, y, z;
 };
 
+struct vec3{
+    double x, y, z;
+    vec3(double x, double y, double z): x{x}, y{y}, z{z} {}
+};
+
 struct surf_tri{
     int v[3];
 };

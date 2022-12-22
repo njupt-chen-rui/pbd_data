@@ -2,32 +2,127 @@
 #include<pbd_data/datastruct.h>
 #include<pbd_data/readinp.h>
 #include<pbd_data/tetEdgeIds.h>
+#include<pbd_data/tetSurfaceTriIds.h>
+#include<pbd_data/edge_set.h>
+#include<pbd_data/tet_set.h>
+#include<pbd_data/bou_tag.h>
+#include<pbd_data/output_mesh_data.h>
 using namespace std;
 
 int main(){
-    cout<<"hello"<<endl;
+    cout << "begin" << endl;
     string file_name = "test1";
     string file_format = ".inp";
     string input_path = "./data/input/" + file_name + file_format;
     string output_path = "./data/output/" + file_name + ".py";
 
+    output_mesh_data out(output_path);
+    // output name
+    out.output_name(file_name);
+    cout << "finish out name" << endl;
+
     vector<vert> verts;
     vector<tet> tets;
+    // get verts and tetIds
     readinp_tet(input_path, verts, tets);
+
+    // output verts
+    out.output_verts(verts);
+    cout << "finish out verts" << endl;
+
+    // output tetIds
+    out.output_tetIds(tets);
+    cout << "finish out tetIds" << endl;
+
+    // get tetEdgeIds
     vector<int> tet_edge_ids;
     tetEdgeIds(verts, tets, tet_edge_ids);
-    tetSurfaceTriIds();
-    // get_tet_edge();
-    // cout<<verts.size()<<endl;
-    // for(size_t i = 0;i<10;i++){
-    //     cout<<verts[i].x<<" "<<verts[i].y<<" "<<verts[i].z<<endl;
-    // }
-    // cout<<tets.size()<<endl;
-    // for(size_t i = 0;i<10;i++){
-    //     cout<<tets[i].v[0]<<" "<<tets[i].v[1]<<" "<<tets[i].v[2]<<" "<<tets[i].v[3]<<endl;
-    // }
 
+    // output tetEdgeIds
+    out.output_tetEdgeIds(tet_edge_ids);
+    cout << "finish out tetEdgeIds" << endl;
 
-    // output_meshdata(output_path, file_name);
+    // get tetSurfaceTriIds
+    get_tet_surf gtst(verts, tets);
+    vector<int> tet_surface_tri_ids;
+    gtst.tetSurfaceTriIds(tet_surface_tri_ids);
+
+    // output tetSurfaceTriIds
+    out.output_tetSurfaceTriIds(tet_surface_tri_ids);
+    vector<int>().swap(tet_surface_tri_ids);
+    cout << "finish out tetSurfaceTriIds" << endl;
+
+    // get fiberDirection 
+    vector<vec3> fiber;
+    for(size_t i = 0; i < tets.size(); i++){
+        vec3 tmp = vec3{1., 0., 0.};
+        fiber.push_back(tmp);
+    }
+
+    // output fiberDirection
+    out.output_fiberDirection(fiber);
+    vector<vec3>().swap(fiber);
+    cout << "finish out fiber" << endl;
+
+    // get sheetDirection
+    vector<vec3> sheet;
+    for(size_t i = 0; i < tets.size(); i++){
+        vec3 tmp = vec3{0., 1., 0.};
+        sheet.push_back(tmp);
+    }
+
+    // output sheetDirection
+    out.output_sheetDirection(sheet);
+    vector<vec3>().swap(sheet);
+    cout << "finish out sheet" << endl;
+
+    // get normalDirection
+    vector<vec3> normal;
+    for(size_t i = 0; i < tets.size(); i++){
+        vec3 tmp = vec3{0., 0., 1.};
+        normal.push_back(tmp);
+    }
+
+    // output normalDirection
+    out.output_normalDirection(normal);
+    vector<vec3>().swap(normal);
+    cout << "finish out normal" << endl;
+
+    // get edge_set
+    int num_edge_set;
+    vector<int> edge_set_id;
+    get_edge_set ges(verts, tet_edge_ids);
+    ges.edge_set(num_edge_set, edge_set_id);
+
+    // output edge_set
+    out.output_edge_set(num_edge_set, edge_set_id);
+    vector<int>().swap(tet_edge_ids);
+    vector<int>().swap(edge_set_id);
+    cout << "finish out edge_set" << endl;
+
+    // get tet_set
+    int num_tet_set;
+    vector<int> tets_set_id;
+    get_tet_set gts(verts, tets);
+    gts.tet_set_id(num_tet_set, tets_set_id);
+
+    // output tet_set
+    out.output_tet_set(num_tet_set, tets_set_id);
+    vector<tet>().swap(tets);
+    vector<int>().swap(tets_set_id);
+    cout << "finish out tet_set" << endl;
+
+    // get bou_tag
+    vector<int> bou_tag;
+    get_bou_tag_1(verts, bou_tag);
+
+    // output bou_tag
+    out.output_bou_tag(bou_tag);
+    vector<vert>().swap(verts);
+    vector<int>().swap(bou_tag);
+    cout << "finish out bou_tag" << endl;
+
+    out.output_end();
+    
     return 0;
 }
