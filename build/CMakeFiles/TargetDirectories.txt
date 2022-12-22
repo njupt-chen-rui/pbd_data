@@ -1,3 +1,0 @@
-D:/workspace/yjs_project/pbd_data/build/CMakeFiles/pbd_data.dir
-D:/workspace/yjs_project/pbd_data/build/CMakeFiles/ALL_BUILD.dir
-D:/workspace/yjs_project/pbd_data/build/CMakeFiles/ZERO_CHECK.dir
