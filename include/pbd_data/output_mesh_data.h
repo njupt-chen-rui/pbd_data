@@ -16,7 +16,7 @@ struct output_mesh_data{
     output_mesh_data(string out_path): out_path{out_path} {
         fout.open(out_path);
         // fout.open(out_path, ios::app);
-        fout << "MeshData = {" << endl;
+        fout << "meshData = {" << endl;
     }
     
     ~output_mesh_data(){
@@ -220,8 +220,8 @@ struct output_mesh_data{
         }
     }
 
-    void output_bou_tag(vector<int> &bou_tag){
-        fout << "\t'bou_tag': [" << endl;
+    void output_bou_tag1(vector<int> &bou_tag){
+        fout << "\t'bou_tag_dirichlet': [" << endl;
         int cnt = 0;
         for(size_t i = 0; i < bou_tag.size(); i++){
             if(cnt == 0) fout << "\t\t";
@@ -240,6 +240,28 @@ struct output_mesh_data{
             }
         }
     }
+
+    void output_bou_tag2(vector<int> &bou_tag){
+        fout << "\t'bou_tag_neumann': [" << endl;
+        int cnt = 0;
+        for(size_t i = 0; i < bou_tag.size(); i++){
+            if(cnt == 0) fout << "\t\t";
+            fout << bou_tag[i];
+            if(i != bou_tag.size() - 1){
+                fout << ", ";
+            }else{
+                fout << endl;
+                fout << "\t]," << endl;
+                break;
+            }
+            cnt++;
+            if(cnt == 10){
+                cnt = 0;
+                fout << endl;
+            }
+        }
+    }
+
 
     void output_end(){
         fout << "}" << endl;

@@ -42,15 +42,15 @@ int main(){
     out.output_tetEdgeIds(tet_edge_ids);
     cout << "finish out tetEdgeIds" << endl;
 
-    // get tetSurfaceTriIds
-    get_tet_surf gtst(verts, tets);
-    vector<int> tet_surface_tri_ids;
-    gtst.tetSurfaceTriIds(tet_surface_tri_ids);
+    // // get tetSurfaceTriIds
+    // get_tet_surf gtst(verts, tets);
+    // vector<int> tet_surface_tri_ids;
+    // gtst.tetSurfaceTriIds(tet_surface_tri_ids);
 
-    // output tetSurfaceTriIds
-    out.output_tetSurfaceTriIds(tet_surface_tri_ids);
-    vector<int>().swap(tet_surface_tri_ids);
-    cout << "finish out tetSurfaceTriIds" << endl;
+    // // output tetSurfaceTriIds
+    // out.output_tetSurfaceTriIds(tet_surface_tri_ids);
+    // vector<int>().swap(tet_surface_tri_ids);
+    // cout << "finish out tetSurfaceTriIds" << endl;
 
     // get fiberDirection 
     vector<vec3> fiber;
@@ -112,15 +112,25 @@ int main(){
     vector<int>().swap(tets_set_id);
     cout << "finish out tet_set" << endl;
 
-    // get bou_tag
-    vector<int> bou_tag;
-    get_bou_tag_1(verts, bou_tag);
+    // get bou_tag_dirichlet
+    vector<int> bou_tag1;
+    get_bou_tag_1(verts, bou_tag1);
 
     // output bou_tag
-    out.output_bou_tag(bou_tag);
+    out.output_bou_tag1(bou_tag1);
+    // vector<vert>().swap(verts);
+    vector<int>().swap(bou_tag1);
+    cout << "finish out bou_tag1" << endl;
+
+    // get bou_tag_neumann
+    vector<int> bou_tag2;
+    get_bou_tag_2(verts, bou_tag2);
+
+    // output bou_tag
+    out.output_bou_tag2(bou_tag2);
     vector<vert>().swap(verts);
-    vector<int>().swap(bou_tag);
-    cout << "finish out bou_tag" << endl;
+    vector<int>().swap(bou_tag2);
+    cout << "finish out bou_tag2" << endl;
 
     out.output_end();
     
