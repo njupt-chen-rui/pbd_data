@@ -8,7 +8,7 @@ void get_bou_tag_1(vector<vert> &verts, vector<int> &bou_tag){
     int NV = verts.size();
     double eps = 1e-3;
     for(size_t i = 0; i < NV; i++){
-        if(fabs(verts[i].x) < eps){
+        if(fabs(verts[i].y - 5.0) < eps){
             bou_tag.push_back(1);
         }else{
             bou_tag.push_back(0);
@@ -20,10 +20,11 @@ void get_bou_tag_2(vector<vert> &verts, vector<int> &bou_tag){
     int NV = verts.size();
     double eps = 1e-3;
     for(size_t i = 0; i < NV; i++){
-        if(fabs(verts[i].z) < eps){
-            bou_tag.push_back(1);
-        }else{
-            bou_tag.push_back(0);
-        }
+        // if(fabs(verts[i].z) < eps){
+        //     bou_tag.push_back(1);
+        // }else{
+        //     bou_tag.push_back(0);
+        // }
+        bou_tag.push_back(0);
     }
 }

@@ -21,6 +21,7 @@ void readinp_tet(string Path, vector<vert> &nodes, vector<tet> &tets){
     int a;
     double b1, b2, b3;
     vert tmp{0, 0, 0};
+    cout<<"read node"<<endl;
     while(fin>>str){
         if(str=="*NODE") break;
     }
@@ -37,8 +38,9 @@ void readinp_tet(string Path, vector<vert> &nodes, vector<tet> &tets){
         tmp.z = b3;
         nodes.push_back(tmp);
     }
+    cout<<"read tet"<<endl;
     while(fin>>str){
-        if(str=="*ELEMENT,TYPE=C3D4,ELSET=auto1") break;
+        if(str=="*ELEMENT,TYPE=C3D4,ELSET=auto001") break;
     }
     int meshid;
     tet tmp2{0, 0, 0, 0};
@@ -59,6 +61,7 @@ void readinp_tet(string Path, vector<vert> &nodes, vector<tet> &tets){
         }
         tets.push_back(tmp2);
     }
+    cout<<"finish read"<<endl;
     fin.close();
 }
 

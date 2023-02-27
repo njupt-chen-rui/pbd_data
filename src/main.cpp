@@ -11,7 +11,7 @@ using namespace std;
 
 int main(){
     cout << "begin" << endl;
-    string file_name = "test1";
+    string file_name = "LV1";
     string file_format = ".inp";
     string input_path = "./data/input/" + file_name + file_format;
     string output_path = "./data/output/" + file_name + ".py";
